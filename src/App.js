@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import { Container } from "@chakra-ui/react";
+
+import { Header } from "./components/Header";
+import { List } from "./components/List/List";
+import { Footer } from "./components/Footer";
 
 function App() {
+  const [images, setImages] = useState([]);
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    fetch("https://boiling-refuge-66454.herokuapp.com/images")
+      .then((response) => response.json())
+      .then((data) => setImages(data));
+  }, [setImages]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Container
+        maxW="760px"
+        px="15px"
+        minH="100vh"
+        display="flex"
+        flexDirection="column"
+      >
+        <Header />
+        <List comments={comments} setComments={setComments} images={images} />
+        <Footer />
+      </Container>
+    </>
   );
 }
 
