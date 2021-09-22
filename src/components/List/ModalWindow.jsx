@@ -23,7 +23,7 @@ export const ModalWindow = ({
   handleKeyPress,
 }) => {
   const isComments = comments.length > 0;
-
+	
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose} size="xl">
