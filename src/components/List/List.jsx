@@ -7,6 +7,7 @@ export const List = ({ images, comments, setComments }) => {
     <Grid
       templateColumns="repeat(auto-fit, minmax(229px, 1fr))"
       justifyItems="center"
+      alignContent="flex-start"
       gridColumnGap="21px"
       gridRowGap="30px"
       flex="1 1 auto"
